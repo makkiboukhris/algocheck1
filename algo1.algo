@@ -1,0 +1,24 @@
+ALGORITHM sentence
+VAR
+    ch : STRING:="";
+    i,v,j,c:INTEGER;
+BEGIN
+    REPEAT
+        read(ch);
+    UNTIL (ch[length(ch)]==".");
+    write("number of characters: ",length(ch));
+    c:=0;
+    FOR i FROM 1 TO length(ch)  DO
+        IF (ch[i]==" ") THEN
+            c:=c+1;
+        END_IF
+    END_FOR
+    write("number of words: ",c+1);
+    v:=0;
+    FOR j FROM 1 TO length(ch)   DO
+        IF (uppercase(ch[j]) in ["A","E","I","O","Y","U"]) THEN
+            v:=v+1;
+        END_IF
+    END_FOR
+    write("number of vowels: ",v);
+END
