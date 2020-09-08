@@ -1,0 +1,79 @@
+ALGORITHM algo2
+//problem 1 , solution 1 :
+VAR
+    sum:INTEGER := 0;
+    set1,set2 : ARRAY_OF INTEGER;
+    // var prob1 , sol1:
+    j,i,k,h:INTEGER;
+    // var prob1 , sol2:
+    htab1:HASH_TABLE<INTEGER,INTEGER>
+    htab2:HASH_TABLE<INTEGER,INTEGER>
+    t,z,g,c,p,r:INTEGER
+    // var prob2
+    m,l,s,u:INTEGER
+BEGIN
+//prob1 , sol1:
+    FOR i FROM 1 TO set1.length STEP 1  DO
+        FOR j FROM 1 TO set2.length STEP 1  DO
+            IF ( set1[i] <> set2[j] ) THEN
+                sum:= sum + set1[i]
+            END_IF
+        END_FOR
+    END_FOR
+    FOR k FROM 1 TO set2.length STEP 1  DO
+        FOR h FROM 1 TO set1.length STEP 1  DO
+            IF ( set1[h] <> set2[k] ) THEN
+                sum:= sum + set2[i]
+            END_IF
+        END_FOR
+    END_FOR
+    //prob1 sol 1 result
+    write("sum(solution1): ",sum)
+
+
+//prob1 , sol2:
+    sum:=0
+    FOR t FROM 0 TO set1.length STEP 1  DO
+    htab1.insert(t,set1[t])
+    END_FOR
+    FOR z FROM 0 TO set2.length STEP 1  DO
+    htab2.insert(z,set2[z])
+    END_FOR
+    FOR g FROM 1 TO htab1.length STEP 1  DO
+        FOR c FROM 1 TO htab2.length STEP 1  DO
+            IF ( htab1.get(g) <> htab2.get(c) ) THEN
+                sum:= sum + htab1.get(g)
+            END_IF
+        END_FOR
+    END_FOR
+    FOR p FROM 1 TO htab2.length STEP 1  DO
+        FOR r FROM 1 TO htab1.length STEP 1  DO
+            IF ( htab1.get(r) <> htab2.get(p) ) THEN
+                sum:= sum + htab2.get(p)
+            END_IF
+        END_FOR
+    END_FOR
+    //prob1 , sol2 result
+    write("sum(solution2): ",sum)
+
+
+
+    //prob2
+    sum:=0
+        FOR m FROM 1 TO set1.length STEP 1  DO
+        FOR l FROM 1 TO set2.length STEP 1  DO
+            IF ( set1[m] == set2[l] ) THEN
+                sum:= sum + set1[m]
+            END_IF
+        END_FOR
+    END_FOR
+    FOR s FROM 1 TO set2.length STEP 1  DO
+        FOR u FROM 1 TO set1.length STEP 1  DO
+            IF ( set1[u] == set2[s] ) THEN
+                sum:= sum + set2[s]
+            END_IF
+        END_FOR
+    END_FOR
+    //prob2 result
+    write("sum(prob2): ",sum)
+END
